@@ -94,25 +94,25 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ onOpenEnquiry }) => {
         ))}
       </div>
 
-      {/* Simplified Image Lightbox Modal - Full Screen Zoom & White Background */}
+      {/* Simplified Image Lightbox Modal - Full Screen Zoom on Mobile (Black), White Background on Desktop */}
       {selectedProject && (
         <div 
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white sm:bg-white/95 sm:backdrop-blur-md p-2 sm:p-6 animate-in fade-in duration-200"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black sm:bg-white/95 sm:backdrop-blur-md p-0 sm:p-6 animate-in fade-in duration-200"
           onClick={() => setSelectedProject(null)}
         >
           {/* Modal Close Button */}
           <button
             onClick={() => setSelectedProject(null)}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 p-2.5 bg-gray-100 hover:bg-gray-200 text-black rounded-full transition-colors shadow-sm"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[110] p-2.5 bg-white/20 sm:bg-gray-100 hover:bg-white/30 sm:hover:bg-gray-200 text-white sm:text-black rounded-full transition-colors shadow-sm"
           >
             <X className="w-6 h-6" />
           </button>
 
           <div 
-            className="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center mt-8 sm:mt-0"
+            className="relative w-full h-full sm:max-w-6xl sm:max-h-[85vh] flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal High-Res Image Container - Scales fully */}
+            {/* Modal High-Res Image Container - Scales fully without borders on mobile */}
             <div className="relative w-full h-full flex items-center justify-center flex-1 min-h-0">
               <img
                 src={selectedProject.image}
@@ -122,9 +122,9 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ onOpenEnquiry }) => {
             </div>
             
             {/* Title / Client Info */}
-            <div className="mt-4 text-center pb-4 sm:pb-0 shrink-0">
-              <h3 className="text-chayam-charcoal text-lg sm:text-2xl font-bold">{selectedProject.title}</h3>
-              <p className="text-gray-500 text-sm font-medium">{selectedProject.client}</p>
+            <div className="absolute bottom-0 left-0 right-0 p-6 sm:static sm:p-0 sm:mt-4 text-center shrink-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent sm:bg-none pointer-events-none">
+              <h3 className="text-white sm:text-chayam-charcoal text-lg sm:text-2xl font-bold">{selectedProject.title}</h3>
+              <p className="text-gray-300 sm:text-gray-500 text-sm font-medium">{selectedProject.client}</p>
             </div>
           </div>
         </div>
