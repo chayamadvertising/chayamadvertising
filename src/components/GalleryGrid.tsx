@@ -79,53 +79,52 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ onOpenEnquiry }) => {
                 View Image
               </button>
 
-              {onOpenEnquiry && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onOpenEnquiry();
-                  }}
-                  className="w-full sm:w-auto px-4 py-2 bg-chayam-green text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 shadow-glow transition-colors"
-                >
-                  Enquiry
-                </button>
-              )}
+              {/* Direct WhatsApp Enquiry Button */}
+              <a
+                href={`https://wa.me/919048239785?text=Hi, I would like to enquire about this project from your gallery: ${encodeURIComponent(project.title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="w-full sm:w-auto px-4 py-2 bg-chayam-green text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 shadow-glow transition-colors hover:bg-emerald-700"
+              >
+                Enquiry
+              </a>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Simplified Image Lightbox Modal */}
+      {/* Simplified Image Lightbox Modal - Full Screen Zoom & White Background */}
       {selectedProject && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white sm:bg-white/95 sm:backdrop-blur-md p-2 sm:p-6 animate-in fade-in duration-200"
           onClick={() => setSelectedProject(null)}
         >
+          {/* Modal Close Button */}
+          <button
+            onClick={() => setSelectedProject(null)}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 p-2.5 bg-gray-100 hover:bg-gray-200 text-black rounded-full transition-colors shadow-sm"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
           <div 
-            className="relative w-full max-w-5xl max-h-[90vh] flex flex-col items-center justify-center animate-in zoom-in-95 duration-200"
+            className="relative w-full h-full max-w-6xl max-h-[85vh] flex flex-col items-center justify-center mt-8 sm:mt-0"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Close Button */}
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute -top-12 right-0 z-20 p-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {/* Modal High-Res Image Container */}
-            <div className="relative w-full h-full flex items-center justify-center">
+            {/* Modal High-Res Image Container - Scales fully */}
+            <div className="relative w-full h-full flex items-center justify-center flex-1 min-h-0">
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
+                className="max-w-full max-h-full object-contain shadow-none sm:shadow-2xl rounded-none sm:rounded-xl"
               />
             </div>
             
             {/* Title / Client Info */}
-            <div className="mt-4 text-center">
-              <h3 className="text-white text-lg sm:text-xl font-bold">{selectedProject.title}</h3>
-              <p className="text-gray-300 text-sm">{selectedProject.client}</p>
+            <div className="mt-4 text-center pb-4 sm:pb-0 shrink-0">
+              <h3 className="text-chayam-charcoal text-lg sm:text-2xl font-bold">{selectedProject.title}</h3>
+              <p className="text-gray-500 text-sm font-medium">{selectedProject.client}</p>
             </div>
           </div>
         </div>
