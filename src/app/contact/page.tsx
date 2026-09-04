@@ -115,7 +115,7 @@ export default function ContactPage() {
         </div>
 
         {/* Embedded Google Map iframe with Kozhikode/Mukkam fallback */}
-        <div className="relative w-full h-[450px] rounded-3xl overflow-hidden shadow-xl border-2 border-emerald-100">
+        <div className="relative w-full h-[450px] rounded-3xl overflow-hidden shadow-xl border-2 border-emerald-100 group">
           <iframe
             title="Chayam Advertising & Events Mukkam Plant Location Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.197943503525!2d75.9865!3d11.3218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDE5JzE4LjUiTiA3NcKwNTknMTEuNCJF!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
@@ -125,11 +125,26 @@ export default function ContactPage() {
             allowFullScreen={false}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="w-full h-full"
+            className="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
           />
 
+          {/* Clickable Overlay */}
+          <a 
+            href="https://maps.google.com/?q=North+Karassery+Mukkam+Kozhikode+Kerala" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="absolute inset-0 z-10 cursor-pointer flex items-center justify-center bg-black/0 hover:bg-black/10 transition-colors"
+            title="Click to open in Google Maps"
+          >
+            {/* Optional: 'Open in Maps' tooltip indicator that shows on hover */}
+            <div className="opacity-0 group-hover:opacity-100 bg-white text-chayam-charcoal font-bold px-6 py-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 flex items-center gap-2">
+              <MapPin className="w-5 h-5 text-chayam-green" />
+              Get Directions
+            </div>
+          </a>
+
           {/* Location Overlay Card */}
-          <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-emerald-100 max-w-sm">
+          <div className="absolute bottom-6 left-6 z-20 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-2xl border border-emerald-100 max-w-sm pointer-events-none">
             <div className="flex items-center gap-2 text-chayam-green font-bold text-xs uppercase mb-1">
               <MapPin className="w-4 h-4 text-chayam-green" />
               <span>Chayam Production Hub</span>

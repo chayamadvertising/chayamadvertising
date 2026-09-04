@@ -67,107 +67,65 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ onOpenEnquiry }) => {
             </div>
 
             {/* Bottom Card Summary Bar */}
-            <div className="p-4 bg-chayam-green-subtle flex items-center justify-between border-t border-emerald-100">
-              <span className="text-xs font-bold text-chayam-charcoal flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5 text-chayam-green" />
-                <span>Installed {project.year}</span>
-              </span>
+            <div className="p-4 bg-chayam-green-subtle flex flex-col sm:flex-row items-center justify-between border-t border-emerald-100 gap-3">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedProject(project);
+                }}
+                className="w-full sm:w-auto px-4 py-2 bg-chayam-charcoal text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 hover:bg-black transition-colors"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                View Image
+              </button>
 
-              <span className="text-xs font-bold text-chayam-green flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                View Details
-                <ExternalLink className="w-3.5 h-3.5" />
-              </span>
+              {onOpenEnquiry && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onOpenEnquiry();
+                  }}
+                  className="w-full sm:w-auto px-4 py-2 bg-chayam-green text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 shadow-glow transition-colors"
+                >
+                  Enquiry
+                </button>
+              )}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Project Lightbox Detail Modal */}
+      {/* Simplified Image Lightbox Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-emerald-100 animate-in zoom-in-95 duration-200">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div 
+            className="relative w-full max-w-5xl max-h-[90vh] flex flex-col items-center justify-center animate-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Modal Close Button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 z-20 p-2.5 bg-black/50 hover:bg-black text-white rounded-full transition-colors"
+              className="absolute -top-12 right-0 z-20 p-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
 
-            {/* Modal High-Res Image */}
-            <div className="relative w-full h-80 sm:h-96">
-              <Image
+            {/* Modal High-Res Image Container */}
+            <div className="relative w-full h-full flex items-center justify-center">
+              <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                fill
-                className="object-cover"
+                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-6 right-6 text-white">
-                <span className="px-3 py-1 bg-chayam-green text-xs font-bold uppercase rounded-full">
-                  {selectedProject.category}
-                </span>
-                <h3 className="text-2xl font-black font-display mt-2">{selectedProject.title}</h3>
-              </div>
             </div>
-
-            {/* Modal Technical Details */}
-            <div className="p-6 space-y-4">
-              <div className="flex flex-wrap gap-4 text-xs font-semibold text-gray-700 bg-emerald-50 p-3 rounded-xl border border-emerald-100">
-                <div className="flex items-center gap-1.5">
-                  <Building className="w-4 h-4 text-chayam-green" />
-                  <span>Client: <strong>{selectedProject.client}</strong></span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-chayam-green" />
-                  <span>Location: <strong>{selectedProject.location}</strong></span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4 text-chayam-green" />
-                  <span>Year: <strong>{selectedProject.year}</strong></span>
-                </div>
-              </div>
-
-              <p className="text-sm text-gray-600 leading-relaxed">
-                {selectedProject.description}
-              </p>
-
-              <div>
-                <h4 className="text-xs font-bold text-chayam-charcoal uppercase tracking-wider mb-2">
-                  Technical Specifications & Materials:
-                </h4>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {selectedProject.specs.map((spec, i) => (
-                    <div
-                      key={i}
-                      className="p-2 bg-gray-100 rounded-lg text-xs font-medium text-chayam-charcoal flex items-center gap-1.5"
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-chayam-green flex-shrink-0" />
-                      <span>{spec}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-gray-100 flex justify-end gap-3">
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-chayam-charcoal font-bold text-xs rounded-xl"
-                >
-                  Close Preview
-                </button>
-                {onOpenEnquiry && (
-                  <button
-                    onClick={() => {
-                      setSelectedProject(null);
-                      onOpenEnquiry();
-                    }}
-                    className="px-5 py-2.5 bg-chayam-green text-white font-bold text-xs rounded-xl shadow-glow"
-                  >
-                    Request Similar Signage Quote
-                  </button>
-                )}
-              </div>
+            
+            {/* Title / Client Info */}
+            <div className="mt-4 text-center">
+              <h3 className="text-white text-lg sm:text-xl font-bold">{selectedProject.title}</h3>
+              <p className="text-gray-300 text-sm">{selectedProject.client}</p>
             </div>
           </div>
         </div>

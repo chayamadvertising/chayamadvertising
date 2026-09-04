@@ -39,60 +39,79 @@ export const HeroCarousel: React.FC = () => {
   };
 
   return (
-    <div
-      className="relative w-full aspect-[21/9] sm:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-emerald-100 bg-chayam-charcoal group"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      {/* Slide Images Container */}
+    <div className="flex flex-col w-full group">
+      {/* Carousel Image Container */}
       <div
-        className="flex w-full h-full transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        className="relative w-full aspect-[21/9] sm:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-emerald-100 bg-chayam-charcoal"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className="w-full h-full flex-shrink-0 relative"
-          >
-            {/* Background Image */}
-            <Image
-              src={slide.image}
-              alt={`Banner ${slide.id}`}
-              fill
-              className="object-cover object-center"
-              priority={index <= 2}
+        {/* Slide Images Container */}
+        <div
+          className="flex w-full h-full transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {slides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className="w-full h-full flex-shrink-0 relative"
+            >
+              {/* Background Image */}
+              <Image
+                src={slide.image}
+                alt={`Banner ${slide.id}`}
+                fill
+                className="object-cover object-center"
+                priority={index <= 2}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Prev / Next Navigation Buttons (Overlay) */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md border border-white/30 transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-95 hidden sm:block"
+          aria-label="Previous Slide"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md border border-white/30 transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-95 hidden sm:block"
+          aria-label="Next Slide"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        {/* Dots Indicator - DESKTOP ONLY (Overlay) */}
+        <div className="hidden sm:flex absolute bottom-6 right-6 z-20 items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentSlide(i)}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                i === currentSlide
+                  ? 'w-8 bg-chayam-green shadow-glow'
+                  : 'w-2.5 bg-white/50 hover:bg-white'
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
             />
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* Prev / Next Navigation Buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md border border-white/30 transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-95"
-        aria-label="Previous Slide"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md border border-white/30 transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-95"
-        aria-label="Next Slide"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
-      {/* Dots Indicator */}
-      <div className="absolute bottom-6 right-6 z-20 flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+      {/* Dots Indicator - MOBILE ONLY (Below the image) */}
+      <div className="flex sm:hidden items-center justify-center gap-2 mt-4">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrentSlide(i)}
-            className={`h-2.5 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 ${
               i === currentSlide
-                ? 'w-8 bg-chayam-green shadow-glow'
-                : 'w-2.5 bg-white/50 hover:bg-white'
+                ? 'w-6 bg-chayam-green shadow-glow'
+                : 'w-2 bg-gray-300 hover:bg-gray-400'
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />

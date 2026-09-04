@@ -73,45 +73,47 @@ export default function AboutPage() {
 
 
       {/* Corporate Pillars */}
-      <section className="py-16 bg-gradient-to-r from-chayam-charcoal via-chayam-charcoal-light to-chayam-charcoal text-white rounded-3xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <h2 className="text-[36px] font-black font-display text-white">
-            Our Vision, Mission & Values
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-chayam-green/20 text-chayam-green flex items-center justify-center">
-              <Target className="w-5 h-5 text-chayam-green" />
-            </div>
-            <h3 className="text-[22px] font-bold font-display text-white">Our Vision</h3>
-            <p className="text-[15px] text-gray-300 leading-relaxed">
-              To be the most trusted and innovative signage solutions provider, empowering businesses to achieve maximum brand visibility and impact.
-            </p>
+      <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-16">
+        <section className="py-16 bg-gradient-to-r from-chayam-charcoal via-chayam-charcoal-light to-chayam-charcoal text-white rounded-3xl px-4 sm:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <h2 className="text-[36px] font-black font-display text-white leading-tight">
+              Our Vision, Mission & Values
+            </h2>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-chayam-green/20 text-chayam-green flex items-center justify-center">
-              <Compass className="w-5 h-5 text-chayam-green" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-chayam-green/20 text-chayam-green flex items-center justify-center">
+                <Target className="w-5 h-5 text-chayam-green" />
+              </div>
+              <h3 className="text-[22px] font-bold font-display text-white">Our Vision</h3>
+              <p className="text-[15px] text-gray-300 leading-relaxed">
+                To be the most trusted and innovative signage solutions provider, empowering businesses to achieve maximum brand visibility and impact.
+              </p>
             </div>
-            <h3 className="text-[22px] font-bold font-display text-white">Our Mission</h3>
-            <p className="text-[15px] text-gray-300 leading-relaxed">
-              Deliver exceptional signage and branding solutions through quality craftsmanship, innovative design, and unparalleled customer service.
-            </p>
-          </div>
 
-          <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-chayam-green/20 text-chayam-green flex items-center justify-center">
-              <Heart className="w-5 h-5 text-chayam-green" />
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-chayam-green/20 text-chayam-green flex items-center justify-center">
+                <Compass className="w-5 h-5 text-chayam-green" />
+              </div>
+              <h3 className="text-[22px] font-bold font-display text-white">Our Mission</h3>
+              <p className="text-[15px] text-gray-300 leading-relaxed">
+                Deliver exceptional signage and branding solutions through quality craftsmanship, innovative design, and unparalleled customer service.
+              </p>
             </div>
-            <h3 className="text-[22px] font-bold font-display text-white">Our Values</h3>
-            <p className="text-[15px] text-gray-300 leading-relaxed">
-              Quality, integrity, innovation, and customer satisfaction drive everything we do. We believe in building lasting relationships through excellence.
-            </p>
+
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-chayam-green/20 text-chayam-green flex items-center justify-center">
+                <Heart className="w-5 h-5 text-chayam-green" />
+              </div>
+              <h3 className="text-[22px] font-bold font-display text-white">Our Values</h3>
+              <p className="text-[15px] text-gray-300 leading-relaxed">
+                Quality, integrity, innovation, and customer satisfaction drive everything we do. We believe in building lasting relationships through excellence.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* 5. Our Team & Process Section */}
       <section className="py-20 bg-white border-y border-emerald-100">
