@@ -51,8 +51,13 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ onOpenEnquiry }) => {
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            onClick={() => setSelectedProject(project)}
-            className="group relative bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-card hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between"
+            onClick={() => {
+              // Only allow clicking the card to open modal on desktop (sm and above)
+              if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                setSelectedProject(project);
+              }
+            }}
+            className="group relative bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-card hover:shadow-2xl transition-all duration-300 cursor-pointer sm:cursor-pointer flex flex-col justify-between"
           >
             {/* Image Container */}
             <div className="relative w-full h-64 overflow-hidden">
@@ -73,7 +78,7 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({ onOpenEnquiry }) => {
                   e.stopPropagation();
                   setSelectedProject(project);
                 }}
-                className="w-full sm:w-auto px-4 py-2 bg-chayam-charcoal text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 hover:bg-black transition-colors"
+                className="hidden sm:flex w-full sm:w-auto px-4 py-2 bg-chayam-charcoal text-white text-xs font-bold rounded-lg items-center justify-center gap-1.5 hover:bg-black transition-colors"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 View Image
