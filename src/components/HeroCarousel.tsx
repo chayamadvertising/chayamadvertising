@@ -69,18 +69,18 @@ export const HeroCarousel: React.FC = () => {
         {/* Prev / Next Navigation Buttons (Overlay) */}
         <button
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md border border-white/30 transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-95 hidden sm:block"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/30 transition-all opacity-100 sm:opacity-0 sm:group-hover:opacity-100 hover:scale-110 active:scale-95 flex items-center justify-center"
           aria-label="Previous Slide"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 hover:bg-black/50 text-white backdrop-blur-md border border-white/30 transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-95 hidden sm:block"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/30 transition-all opacity-100 sm:opacity-0 sm:group-hover:opacity-100 hover:scale-110 active:scale-95 flex items-center justify-center"
           aria-label="Next Slide"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         {/* Dots Indicator - DESKTOP ONLY (Overlay) */}
