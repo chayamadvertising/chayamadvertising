@@ -42,27 +42,25 @@ export const HeroCarousel: React.FC = () => {
     <div className="flex flex-col w-full group">
       {/* Carousel Image Container */}
       <div
-        className="relative w-full aspect-[21/9] sm:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-emerald-100 bg-chayam-charcoal"
+        className="relative w-full sm:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-emerald-100 bg-chayam-charcoal flex items-center"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Slide Images Container */}
         <div
-          className="flex w-full h-full transition-transform duration-700 ease-in-out"
+          className="flex w-full transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className="w-full h-full flex-shrink-0 relative"
+              className="w-full flex-shrink-0 relative flex items-center justify-center"
             >
-              {/* Background Image */}
-              <Image
+              {/* Background Image - native height on mobile, cover on desktop */}
+              <img
                 src={slide.image}
                 alt={`Banner ${slide.id}`}
-                fill
-                className="object-cover object-center"
-                priority={index <= 2}
+                className="w-full h-auto sm:w-full sm:h-full sm:object-cover sm:object-center block"
               />
             </div>
           ))}

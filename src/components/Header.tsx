@@ -47,22 +47,21 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnquiry }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Brand Logo & Emblem - Clean without black background */}
-          <Link href="/" className="flex items-center gap-3 group py-1">
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group py-1">
+            <div className="relative w-10 h-10 sm:w-14 sm:h-14 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
               <Image
                 src="/images/chayam_emblem_clean.png"
                 alt="CHAYAM Reticle Emblem Logo"
-                width={56}
-                height={56}
-                className="w-full h-full object-contain drop-shadow-sm"
+                fill
+                className="object-contain drop-shadow-sm"
                 priority
               />
             </div>
             <div className="flex flex-col justify-center">
-              <span className="text-2xl sm:text-3xl font-black font-display tracking-tight text-chayam-charcoal leading-none">
+              <span className="text-xl sm:text-3xl font-black font-display tracking-tight text-chayam-charcoal leading-none">
                 CHAYAM
               </span>
-              <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest text-chayam-green mt-1">
+              <span className="text-[8px] sm:text-[11px] font-extrabold uppercase tracking-widest text-chayam-green mt-0.5 sm:mt-1">
                 ADVERTISING & EVENTS
               </span>
             </div>
