@@ -47,6 +47,7 @@ export default function RootLayout({
           content="Chayam Advertising, Kozhikode signage, flex printing Mukkam, 3D LED channel letters, Malabar Gold signage, Kalyan Silks flex billboard, flatbed UV printing Kerala, acrylic laser cutting Kozhikode, neon signs Kerala, vehicle wrap Kozhikode"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="google-site-verification" content="XLUhAeXs4Pr9MDNVO2vclkEg9QJWDmbgobJUKXwvNic" />
       </head>
       <body className="min-h-screen flex flex-col justify-between bg-white text-chayam-charcoal">
         <Header onOpenEnquiry={handleOpenEnquiry} />
